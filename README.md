@@ -1,2 +1,2 @@
 # mavenTest
-various tests
+various test samples
