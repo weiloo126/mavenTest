@@ -14,6 +14,11 @@ package com.sample.mavenTest.thread;
  * 也就是说在waitThread中执行wait方法时，要保证waitThread对flag有控制权；
  * 在notifyThread中执行notify方法时，要保证notifyThread对flag有控制权。
  * 
+ * 调用wait方法后，线程是会释放对monitor对象的所有权的。
+ * 一个通过wait方法阻塞的线程，必须同时满足以下两个条件才能被真正执行：
+ * 1、线程需要被唤醒（超时唤醒或调用notify/notifyAll）。
+ * 2、线程唤醒后需要竞争到锁（monitor）。
+ * 
  * 线程取得控制权的方法有三：
  * 执行对象的某个同步实例方法。
  * 执行对象对应类的同步静态方法。
