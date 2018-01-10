@@ -10,16 +10,35 @@ import kafka.serializer.StringEncoder;
 
 /**
  * 1、启动kafka中自带的应急的单节点zookeeper服务器：
- * 		bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+ * 		> bin\windows\zookeeper-server-start.bat config\zookeeper.properties
  * 
  * 2、启动kafka服务器：
- * 		bin\windows\kafka-server-start.bat config\server.properties
+ * 		> bin\windows\kafka-server-start.bat config\server.properties
  * 
  * 3、创建一个叫"test"的topic，该topic仅有一个partition和一个replica：
- * 		bin\windows\kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+ * 		> bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
  * 
  * 4、依次启动KafkaProducer和KafkaConsumer，分别进行消息的发送和接收
  * 
+ * 5、创建一个multi-broker的kafka集群（对于kafka而言，single-broker就相当于一个节点的集群，因此除了多启动几个broker实例，不需要做多的改变）
+ * 	（1）拷贝两份kafka配置文件：
+ * 		> copy config\server.properties config\server-1.properties
+ * 		> copy config\server.properties config\server-2.properties
+ * 	（2）将拷贝的文件作如下修改：
+ * 		config/server-1.properties:
+ * 		broker.id=1
+ * 		listeners=PLAINTEXT://:9093
+ * 		log.dir=/tmp/kafka-logs-1
+ * 
+ * 		config/server-2.properties:
+ * 		broker.id=2
+ * 		listeners=PLAINTEXT://:9094
+ * 		log.dir=/tmp/kafka-logs-2
+ * 	（3）创建一个新的topic，其中replication-factor为3：
+ * 		> bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 3 --partitions 1 --topic my-replicated-topic
+ * 
+ * 6、在broker集群下，查看各broker的工作情况，可用“describe topics”命令
+ * 		> bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic my-replicated-topic
  * @date 2018年1月5日
  */
 public class KafkaProducer extends Thread{
@@ -57,7 +76,8 @@ public class KafkaProducer extends Thread{
 	 }	
 	
 	public static void main(String[] args) {
-		new KafkaProducer("test").start();// 使用kafka集群中创建好的主题 test 		
+		//new KafkaProducer("test").start();// 使用kafka集群中创建好的主题 test 	
+		new KafkaProducer("my-replicated-topic").start();
 	}
 
 }

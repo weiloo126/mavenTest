@@ -59,6 +59,7 @@ public class KafkaConsumer extends Thread{
 	}	
 	
 	public static void main(String[] args) {
-		new KafkaConsumer("test").start();// 使用kafka集群中创建好的主题 test 		
+		//new KafkaConsumer("test").start();// 使用kafka集群中创建好的主题 test 	
+		new KafkaConsumer("my-replicated-topic").start();
 	}
 }
