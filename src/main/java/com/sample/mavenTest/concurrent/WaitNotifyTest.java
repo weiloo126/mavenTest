@@ -1,4 +1,4 @@
-package com.sample.mavenTest.thread;
+package com.sample.mavenTest.concurrent;
 
 /**
  * wait()、notify()、notifyAll()是三个定义在Object类里的方法，可以用来控制线程的状态。

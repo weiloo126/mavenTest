@@ -1,4 +1,4 @@
-package com.sample.mavenTest.thread;
+package com.sample.mavenTest.concurrent;
 
 /**
  * 

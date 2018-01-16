@@ -39,6 +39,7 @@ import kafka.serializer.StringEncoder;
  * 
  * 6、在broker集群下，查看各broker的工作情况，可用“describe topics”命令
  * 		> bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic my-replicated-topic
+ * 
  * @date 2018年1月5日
  */
 public class KafkaProducer extends Thread{

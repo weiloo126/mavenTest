@@ -1,4 +1,4 @@
-package com.sample.mavenTest.thread;
+package com.sample.mavenTest.concurrent;
 
 /**
  * Thread.yield( )方法使当前线程从执行状态（运行状态）变为可执行态（就绪状态）。把当前线程重新置入抢CPU时间的"队列"(队列只是说所有线程都在一个起跑线上，并非真正意义上的队列)。
