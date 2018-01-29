@@ -8,6 +8,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * 1、Java中内置了语言级的同步原语－synchronized关键字(从JAVA SE1.0开始，java中的每一个对象都有一个内部锁，如果一个方法使用synchronized关键字进行声明，那么这个对象将保护整个方法，也就是说调用该方法线程必须获得内部的对象锁。)
  * 2、Java SE5.0引入了Lock锁对象的相关类
  * 
+ * 代码同步也是要牺牲效率为前提的：
+ * 同步的好处：解决了线程的安全问题。
+ * 同步的弊端：相对降低了效率，因为同步外的线程的都会判断同步锁。
+ * 同步的前提：同步中必须有多个线程并使用同一个锁。
+ * 
  * @date 2018/01/29 20:59
  */
 public class LockAndSynchronizedTest {
