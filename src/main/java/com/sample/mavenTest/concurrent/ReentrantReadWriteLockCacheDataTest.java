@@ -52,6 +52,7 @@ public class ReentrantReadWriteLockCacheDataTest {
 				data = "cacheTest";
 				cacheValid = true;
 			}
+			// 上读锁一定要在释放写锁前面，不然释放写锁后在上读锁，数据会被别的线程修改，再读锁后已不是自己更新的数据了
 			// Downgrade by acquiring read lock before releasing write lock
 			rwl.readLock().lock();
 			// Unlock write, still hold read
