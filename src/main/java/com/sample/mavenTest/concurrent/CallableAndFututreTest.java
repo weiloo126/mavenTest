@@ -11,7 +11,7 @@ import java.util.concurrent.FutureTask;
  * 
  * @date 2018/01/29 14:28
  */
-public class CallableFututreTest {
+public class CallableAndFututreTest {
 	
 	public static void main(String[] args) {
 		// 使用Callable+Future获取执行结果：
