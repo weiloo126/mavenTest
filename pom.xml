@@ -24,7 +24,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring.version>4.3.9.RELEASE</spring.version>
+    <spring.version>4.3.18</spring.version>
     <servlet>2.5</servlet>
     <jsp>2.0</jsp>
     <aspectJ>1.7.3</aspectJ>
